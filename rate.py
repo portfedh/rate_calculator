@@ -1,16 +1,23 @@
-# inputs
-initial_value = float(input("Precio Incial: "))
-current_value = float(input("Precio Final: "))
-years = float(input("Años: "))
-dividend_value = float(input("Dividendo anual (%): "))
 
+class AnnualReturn():
 
-# Process
-annualized_return = ((current_value / initial_value) ** (1 / years)) - 1
-annualized_return = annualized_return * 100
-total_return = annualized_return + dividend_value
+    def __init__(self):
+        self.get_values()
+        self.calculate_return()
+        self.display_return()
+        
+    def get_values(self):
+        self.initial_value = float(input("Initial Price: "))
+        self.current_value = float(input("Final Price: "))
+        self.years = float(input("Years: "))
+    
+    def calculate_return(self):
+        self.annualized_return = ((self.current_value / self.initial_value) ** (1 / self.years)) - 1
+        self.annualized_return = self.annualized_return * 100
 
+    def display_return(self):
+        print("Annualized return: " + "{:,.2f}".format(self.annualized_return) + "%")
 
-# Outputs
-print("Retorno Anualizado: " + "{:,.2f}".format(annualized_return) + "%")
-print("Retorno Total: " + "{:,.2f}".format(total_return) + "%")
+if __name__ == "__main__":
+    print('Calculate the Annual Rate of Return of an investment.')
+    oAnnualReturn = AnnualReturn()
